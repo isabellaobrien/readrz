@@ -15,7 +15,8 @@ function NavBar() {
                 <Nav.Link href="#" className={styles.link}>home</Nav.Link>
                 <Nav.Link href="#" className={styles.link}>feed</Nav.Link>
                 <Nav.Link href="#" className={styles.link}>liked</Nav.Link>
-                <Nav.Link href="#" className={styles.link}>log out</Nav.Link>
+                <Nav.Link href="#" className={styles.link}>log in</Nav.Link>
+                <Nav.Link href="#" className={styles.link}>sign up</Nav.Link>
                 </Nav>
             </Navbar.Collapse>
         </Navbar>
