@@ -1,0 +1,25 @@
+.container{
+    width: 25rem;
+    margin: auto;
+    background-color: #FDFF70;
+    padding: 3rem 2rem ;
+    border-radius: 0.25rem;
+    margin-bottom: 5rem;
+}
+
+.title{
+    font-size: 1.5rem;
+    padding-bottom: 1rem;
+}
+
+.input{
+    padding-bottom: 1rem;
+}
+
+.btn{
+    color: black;
+    background-color: white;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    border: black solid 1px;
+}
