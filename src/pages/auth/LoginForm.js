@@ -3,11 +3,14 @@ import {Form, Alert} from "react-bootstrap"
 import styles from '../../styles/Forms.module.css'
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
+import { useSetCurrentUser } from '../../contexts/CurrentUserContext';
 
 
 
 
 const LoginForm = () => {
+    const setCurrentUser = useSetCurrentUser();
+
     const [LoginData, setLoginData] = useState({
         username: "",
         password: "",
@@ -29,7 +32,8 @@ const LoginForm = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-          await axios.post("/dj-rest-auth/login/", LoginData);
+          const {data} = await axios.post("/dj-rest-auth/login/", LoginData);
+          setCurrentUser(data.user);
           history.push("/");
         } catch (err) {
             setErrors(err.response?.data);
@@ -40,7 +44,7 @@ const LoginForm = () => {
   return (
     <div className={styles.container}>
         <Form onSubmit={handleSubmit}>
-            <p className={styles.title}>sign up</p>
+            <p className={styles.title}>log in</p>
             <Form.Group controlId="username" className={styles.input}>
                 <Form.Label className="d-none">username</Form.Label>
                 <Form.Control 
