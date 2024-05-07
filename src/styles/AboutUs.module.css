@@ -1,0 +1,40 @@
+.logo{
+    font-family: 'Roboto', 'sans serif';
+    font-weight: 700;
+    font-size: 5rem;
+    padding-top: 6rem;
+}
+
+
+.text_box{
+    width: 25rem;
+    text-align: center;
+    margin: auto;
+    padding-bottom: 3rem;
+}
+
+.btn{
+    color: black;
+    background-color: white;
+    padding: 0.5rem;
+    margin-right: 3rem ;
+    border-radius: 0.25rem;
+    border: black solid 1px;
+}
+
+.badge{
+    background-color: orange;
+    font-size: larger;
+    margin-right: 3rem;
+    padding: 1rem;
+}
+
+.title{
+    font-size: 1.5rem;
+}
+.content{
+    background-color: orange;
+    display: inline-block;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+}
