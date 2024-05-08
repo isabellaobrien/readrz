@@ -1,0 +1,20 @@
+.img{
+    width: 3rem;
+    margin-right: 1rem;
+}
+.profile{
+    text-align: left;
+}
+
+.owner{
+    display: inline-block;
+    font-weight: 400;
+}
+
+.title{
+    text-transform: uppercase;
+}
+
+.time{
+    text-align: left;
+}
