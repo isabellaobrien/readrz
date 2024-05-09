@@ -1,10 +1,10 @@
-import {React, useState} from 'react'
+import React, { useEffect, useState } from 'react'
+import { useHistory, useParams } from 'react-router-dom/cjs/react-router-dom.min';
+import { axiosReq } from '../../api/axiosDefaults';
 import styles from '../../styles/Forms.module.css'
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
-import { axiosReq } from '../../api/axiosDefaults'
-import {Form, Alert, } from 'react-bootstrap'
+import {Form, Alert,} from 'react-bootstrap'
 
-const CreateStory = () => {
+const StoryEditForm = () => {
     const [StoryData, setStoryData] = useState({
         title: "",
         description: "",
@@ -16,6 +16,22 @@ const CreateStory = () => {
     const [errors, setErrors] = useState({})
 
     const history = useHistory();
+    const {id} = useParams();
+
+    useEffect(() => {
+        const handleMount = async () => {
+            try{
+                const {data} = await axiosReq.get(`/stories/${id}/`);
+                const {title, description, content, is_owner} = data;
+
+                is_owner? setStoryData({title, description,content}) : history.push("/");
+            }catch(err){
+                console.log(err)
+            }
+        };
+
+        handleMount();
+    }, [history, id])
 
     const handleChange = (event) => {
         setStoryData({
@@ -32,8 +48,8 @@ const CreateStory = () => {
         formData.append("content", content);
 
         try {
-          const {data} = await axiosReq.post("/stories/", formData);
-          history.push(`/stories/${data.id}`);
+          await axiosReq.put(`/stories/${id}/`, formData);
+          history.push(`/stories/${id}`);
         } catch (err) {
             console.log(err)
             if (err.response?.status !== 401) {
@@ -45,7 +61,7 @@ const CreateStory = () => {
   return (
     <div className={styles.container}>
         <Form onSubmit={handleSubmit}>
-            <p className={styles.title}>create a story</p>
+            <p className={styles.title}>edit your story</p>
             <Form.Group controlId="title" className={styles.input}>
                 <Form.Label className="d-none">title</Form.Label>
                 <Form.Control 
@@ -96,7 +112,7 @@ const CreateStory = () => {
             ))}
 
             <button type="submit" className={styles.btn}>
-                create story
+                edit story
             </button>
             {errors.non_field_errors?.map((message, idx) => (
                 <Alert key={idx} variant="warning">
@@ -108,4 +124,4 @@ const CreateStory = () => {
   )
 }
 
-export default CreateStory
+export default StoryEditForm

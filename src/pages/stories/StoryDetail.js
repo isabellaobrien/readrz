@@ -1,17 +1,16 @@
 import React from 'react'
-import {Card, OverlayTrigger, Tooltip} from 'react-bootstrap'
+import {Card, OverlayTrigger, Tooltip, Dropdown} from 'react-bootstrap'
 import styles from '../../styles/Story.module.css'
 import {axiosRes} from '../../api/axiosDefaults'
 import {useCurrentUser} from '../../contexts/CurrentUserContext'
-import { Link } from "react-router-dom";
-
-const Story = (props) => {
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
+const StoryDetail = (props) => {
   const {
     id, 
     owner,
     title,
-    description,
-    // content,
+    // description,
+    content,
     // profile_id,
     profile_image,
     // comment_count,
@@ -23,7 +22,20 @@ const Story = (props) => {
 
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
+  const history = useHistory();
 
+  const handleEdit = () => {
+    history.push(`/stories/${id}/edit`);
+  };
+
+  const handleDelete = async () => {
+    try{
+      await axiosRes.delete(`stories/${id}/`);
+      history.push("/");
+    }catch (err){
+      console.log(err)
+    }
+  }
 
   const handleLike = async () => {
     try{
@@ -66,20 +78,35 @@ const Story = (props) => {
                 <Card.Title className={styles.profile}>
                   <img src={profile_image} className={styles.img} alt="profile"/>
                   <p className={styles.owner}>{owner}</p>
+                  <div className={styles.more}>
+                    {is_owner && (
+                      <Dropdown drop="up">
+                        <Dropdown.Toggle className={styles.dropdown} id="dropdown-basic">
+                          </Dropdown.Toggle>
+                          <Dropdown.Menu>
+                            <Dropdown.Item 
+                              onClick={handleEdit}>
+                              edit <i class="fa-solid fa-pen-to-square"></i>
+                            </Dropdown.Item>
+                            <Dropdown.Item
+                              onClick={handleDelete}>
+                              delete <i class="fa-solid fa-trash"></i>
+                            </Dropdown.Item>
+                          </Dropdown.Menu>
+                        </Dropdown>
+                        )}
+                  </div>
                 </Card.Title>
-                
                 <hr />
-                <Link to={`/stories/${id}`}>
-                  <Card.Text>
-                    <h6 className={styles.title}>{title}</h6>
-                  </Card.Text>
-                  <Card.Text>
-                  {description}
-                  </Card.Text>
-                </Link>
+                <Card.Text>
+                  <h6 className={styles.title}>{title}</h6>
+                </Card.Text>
                 {/* <Card.Text>
-                {content}
+                {description}
                 </Card.Text> */}
+                <Card.Text>
+                {content}
+                </Card.Text>
                 <small className={styles.time}>{updated_at}</small>
                 <hr />
                 {is_owner? (
@@ -113,4 +140,4 @@ const Story = (props) => {
   )
 }
 
-export default Story
+export default StoryDetail

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min'
 import { axiosReq } from '../../api/axiosDefaults'
-import Story from './Story'
+import StoryDetail from './StoryDetail'
 
 const StoryPage = () => {
     const {id} = useParams();
@@ -24,7 +24,7 @@ const StoryPage = () => {
       }, [id]);
   return (
     <div>
-        <Story {...story.results[0]} setStory={setStory} />
+        <StoryDetail {...story.results[0]} setStory={setStory} />
     </div>
   )
 }

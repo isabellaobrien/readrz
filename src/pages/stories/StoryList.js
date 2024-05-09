@@ -8,7 +8,7 @@ import NoResults from '../../assets/no-result-found.avif'
 import styles from '../../styles/StoryList.module.css'
 
 const StoryList = ({ message, filter = "" }) => {
-    const [stories, setStories] = useState({results:[]})
+    const [story, setStory] = useState({results:[]})
     const [hasLoaded, setHasLoaded] = useState(false);
     const { pathname } = useLocation();
 
@@ -16,7 +16,7 @@ const StoryList = ({ message, filter = "" }) => {
         const fetchStories = async () => {
           try {
             const { data } = await axiosReq.get(`/stories/?${filter}`);
-            setStories(data);
+            setStory(data);
             setHasLoaded(true);
           } catch (err) {
             console.log(err);
@@ -31,8 +31,8 @@ const StoryList = ({ message, filter = "" }) => {
         <Container className={styles.story}>
             {hasLoaded? (
             <>
-            {stories.results.length? stories.results.map((story) => (
-                <Story key={story.id} {...story} setStories={setStories}/>
+            {story.results.length? story.results.map((story) => (
+                <Story key={story.id} {...story} setStory={setStory}/>
             )) : (
                 <Container>
                         <Asset src={NoResults} message={message} />
