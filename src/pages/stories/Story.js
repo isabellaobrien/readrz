@@ -58,19 +58,20 @@ const Story = (props) => {
 
   return (
     <div className={styles.container}>
-        <Card style={{ width: '18rem' }}>
+        <Card style={{ width: '25rem' }}>
             <Card.Body>
                 <Card.Title className={styles.profile}>
                   <img src={profile_image} className={styles.img} alt="profile"/>
                   <p className={styles.owner}>{owner}</p>
                 </Card.Title>
+                <hr />
                 <Card.Text>
                   <h6 className={styles.title}>{title}</h6>
                 </Card.Text>
                 <Card.Text>
                 {content}
                 </Card.Text>
-                <p className={styles.time}>{updated_at}</p>
+                <small className={styles.time}>{updated_at}</small>
                 <hr />
                 {is_owner? (
                   <OverlayTrigger

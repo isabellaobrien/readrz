@@ -9,35 +9,35 @@ const AboutUs = () => {
         <h1 className={styles.logo}>READRZ.</h1>
         <div className={styles.text_box}>
             <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-            Erat velit scelerisque in dictum non consectetur a erat nam.
+            Readrz is a social media app where you can share your opinions,
+            life stories, and your creativity in written form. 
             </p>
         </div>
         <div>
           <Card style={{ width: '18rem' }} className={styles.content}>
             <Card.Body>
-              <Card.Title className={styles.title}>Card Title</Card.Title>
+              <Card.Title className={styles.title}>Community</Card.Title>
               <Card.Text>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                you can comment, like comments, reply to comments an even like replies, this 
+                functionality allowbs you to interact with other users creating a sense of community
               </Card.Text>
             </Card.Body>
           </Card>
 
           <Card style={{ width: '18rem' }} className={styles.content}>
             <Card.Body>
-              <Card.Title className={styles.title}>Card Title</Card.Title>
+              <Card.Title className={styles.title}>Guidelines</Card.Title>
               <Card.Text>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                you can write about anything you want as long as it is respectful and approriate.
               </Card.Text>
             </Card.Body>
           </Card>
 
           <Card style={{ width: '18rem' }} className={styles.content}>
             <Card.Body>
-              <Card.Title className={styles.title}>Card Title</Card.Title>
+              <Card.Title className={styles.title}>try it</Card.Title>
               <Card.Text>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                if you either like reading or writing readrz is for you.
               </Card.Text>
             </Card.Body>
           </Card>
