@@ -2,7 +2,7 @@ import {React, useState} from 'react'
 import styles from '../../styles/Forms.module.css'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 import { axiosReq } from '../../api/axiosDefaults'
-import {Form, Alert, } from 'react-bootstrap'
+import {Form, Alert} from 'react-bootstrap'
 
 const CreateStory = () => {
     const [StoryData, setStoryData] = useState({
