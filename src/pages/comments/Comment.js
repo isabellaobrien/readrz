@@ -1,9 +1,10 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import styles from '../../styles/Comment.module.css'
 import {axiosRes} from '../../api/axiosDefaults'
-import { OverlayTrigger, Tooltip } from 'react-bootstrap';
+import { OverlayTrigger, Tooltip, Dropdown } from 'react-bootstrap';
+import CommentEditForm from './CommentEditForm';
 const Comment = (props) => {
     const {
     id, 
@@ -16,10 +17,13 @@ const Comment = (props) => {
     comment_likes_count,
     comment_reply_count,
     setComment,
+    setStory
     } = props
 
     const currentUser = useCurrentUser();
     const is_owner = currentUser?.username === owner;
+
+    const [showEditForm, setShowEditForm] = useState(false);
 
     const handleCommentLike = async () => {
         try{
@@ -54,12 +58,63 @@ const Comment = (props) => {
         }
       };
 
+      const handleDelete = async () => {
+        try{
+            await axiosRes.delete(`/comments/${id}`);
+            setStory((prevStory) => ({
+                results: [
+                    {
+                        ...prevStory.results[0],
+                        commments_count: prevStory.results[0].commments_count - 1,
+                    }
+                ]
+            }))
+
+            setComment((prevComments) => ({
+                ...prevComments,
+                results: prevComments.results.filter((comment) => comment.id !== id)
+            }))
+        }catch (err){
+            console.log(err)
+        }
+    }
+
     return (
     <div className={styles.container}>
         <Link to={`/profiles/${profile_id}`}>
             <img src={profile_image} className={styles.img} alt="profile"/>
             <p className={styles.owner}>{owner}</p>
         </Link>
+        <div className={styles.more}>
+            {is_owner && !showEditForm && (<Dropdown drop="up">
+              <Dropdown.Toggle className={styles.dropdown} id="dropdown-basic">
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item 
+                    onClick={() => setShowEditForm(true)}>
+                    edit <i class="fa-solid fa-pen-to-square"></i>
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    onClick={(handleDelete)}>
+                    delete <i class="fa-solid fa-trash"></i>
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>)}
+        </div>
+        <div>
+          {showEditForm? (
+            <CommentEditForm
+              id={id} 
+              profile_id={profile_id}
+              content={content}
+              profile_image={profile_image}
+              setComments={setComment}
+              setShowEditForm={setShowEditForm}
+            />
+          ) : (
+            <p className={styles.content}>{content}</p>
+          )}
+        </div>
         <p>{content}</p>
         <small className={styles.time}>{updated_at}</small>
         <hr />
