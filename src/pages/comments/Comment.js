@@ -5,6 +5,7 @@ import styles from '../../styles/Comment.module.css'
 import {axiosRes} from '../../api/axiosDefaults'
 import { OverlayTrigger, Tooltip, Dropdown } from 'react-bootstrap';
 import CommentEditForm from './CommentEditForm';
+import CreateReply from '../replies/CreateReply';
 const Comment = (props) => {
     const {
     id, 
@@ -24,6 +25,8 @@ const Comment = (props) => {
     const is_owner = currentUser?.username === owner;
 
     const [showEditForm, setShowEditForm] = useState(false);
+    const [showReplyForm, setShowReplyForm] = useState(false);
+    const [setReply] = useState({results: []})
 
     const handleCommentLike = async () => {
         try{
@@ -114,8 +117,7 @@ const Comment = (props) => {
           ) : (
             <p className={styles.content}>{content}</p>
           )}
-        </div>
-        <p>{content}</p>
+        </div >
         <small className={styles.time}>{updated_at}</small>
         <hr />
         {is_owner? (
@@ -140,10 +142,38 @@ const Comment = (props) => {
             </OverlayTrigger>
         )}
         {comment_likes_count}
-        <div className={styles.icon}>
+        <div className={styles.icon} onClick={() => setShowReplyForm(true)}>
             <i class="fa-solid fa-arrow-right"></i>
             {comment_reply_count}
         </div>
+        <hr />
+        <small>{updated_at}</small>
+
+        {currentUser && showReplyForm ? (
+            <>
+              <CreateReply
+                profile_id={profile_id}
+                profile_image={profile_image}
+                comment={id}
+                setComments={setComment}
+                setReply={setReply}
+              />
+              {/* {reply.results.length? (
+                reply.results.map((rep) => (
+                  <Reply 
+                    key={rep.id} 
+                    {...rep}
+                    setComments={setComment}
+                    setReply={setReply}
+                  />
+                ))
+              ): null} */}
+              <button onClick={() => setShowReplyForm(false)} className={styles.btn}>hide</button>
+            </>
+            ) : (
+              null
+            )}
+
     </div>
     )
 }
