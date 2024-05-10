@@ -11,10 +11,9 @@ const Story = (props) => {
     owner,
     title,
     description,
-    // content,
-    // profile_id,
+    profile_id,
     profile_image,
-    // comment_count,
+    comments_count,
     likes_count,
     updated_at,
     like_id,
@@ -64,8 +63,10 @@ const Story = (props) => {
         <Card style={{ width: '25rem' }}>
             <Card.Body>
                 <Card.Title className={styles.profile}>
-                  <img src={profile_image} className={styles.img} alt="profile"/>
-                  <p className={styles.owner}>{owner}</p>
+                  <Link to={`/profiles/${profile_id}`}>
+                    <img src={profile_image} className={styles.img} alt="profile"/>
+                    <p className={styles.owner}>{owner}</p>
+                  </Link>
                 </Card.Title>
                 
                 <hr />
@@ -104,9 +105,10 @@ const Story = (props) => {
                   </OverlayTrigger>
                 )}
                 {likes_count}
-                {/* <div>
+                <div className={styles.icon}>
                   <i class="fa-regular fa-comment"></i>
-                </div> */}
+                  {comments_count}
+                </div>
             </Card.Body>
         </Card>
     </div>

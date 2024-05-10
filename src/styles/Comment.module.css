@@ -1,0 +1,17 @@
+.time{
+    text-align: left;
+}
+.container{
+    padding-bottom: 3rem;
+}
+
+.img{
+    width: 3rem;
+    margin-right: 1rem;
+}
+
+.owner{
+    display: inline-block;
+    font-weight: 400;
+    padding-right: 14rem;
+}

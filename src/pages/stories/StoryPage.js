@@ -4,6 +4,7 @@ import { axiosReq } from '../../api/axiosDefaults'
 import StoryDetail from './StoryDetail'
 import CreateComment from '../comments/CreateComment'
 import { useCurrentUser } from '../../contexts/CurrentUserContext'
+import Comment from '../comments/Comment'
 
 const StoryPage = () => {
     const {id} = useParams();
@@ -40,7 +41,21 @@ const StoryPage = () => {
             story={id}
             setStory={setStory}
             setComment={setComment}
-          />) :  comment.results.length? ("comments"): null}
+          />) : null}
+          {comment.results.length? (
+            comment.results.map((comment) => (
+              <Comment 
+                key={comment.id} 
+                {...comment}
+                setStory={setStory}
+                setComment={setComment}
+              />
+            ))
+          ) : currentUser ? (
+            <p>no comments yet, make one!</p>
+          ) : (
+            <p>no comments yet.</p>
+          )}
     </div>
   )
 }

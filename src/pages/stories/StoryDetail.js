@@ -3,17 +3,16 @@ import {Card, OverlayTrigger, Tooltip, Dropdown} from 'react-bootstrap'
 import styles from '../../styles/Story.module.css'
 import {axiosRes} from '../../api/axiosDefaults'
 import {useCurrentUser} from '../../contexts/CurrentUserContext'
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
+import { Link, useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 const StoryDetail = (props) => {
   const {
     id, 
     owner,
     title,
-    // description,
     content,
-    // profile_id,
+    profile_id,
     profile_image,
-    // comment_count,
+    comments_count,
     likes_count,
     updated_at,
     like_id,
@@ -76,8 +75,10 @@ const StoryDetail = (props) => {
         <Card style={{ width: '25rem' }}>
             <Card.Body>
                 <Card.Title className={styles.profile}>
-                  <img src={profile_image} className={styles.img} alt="profile"/>
-                  <p className={styles.owner}>{owner}</p>
+                  <Link to={`/profiles/${profile_id}`}>
+                    <img src={profile_image} className={styles.img} alt="profile"/>
+                    <p className={styles.owner}>{owner}</p>
+                  </Link>
                   <div className={styles.more}>
                     {is_owner && (
                       <Dropdown drop="up">
@@ -101,9 +102,6 @@ const StoryDetail = (props) => {
                 <Card.Text>
                   <h6 className={styles.title}>{title}</h6>
                 </Card.Text>
-                {/* <Card.Text>
-                {description}
-                </Card.Text> */}
                 <Card.Text>
                 {content}
                 </Card.Text>
@@ -131,9 +129,11 @@ const StoryDetail = (props) => {
                   </OverlayTrigger>
                 )}
                 {likes_count}
-                {/* <div>
+                <div className={styles.icon}>
                   <i class="fa-regular fa-comment"></i>
-                </div> */}
+                  {comments_count}
+                </div>
+                
             </Card.Body>
         </Card>
     </div>

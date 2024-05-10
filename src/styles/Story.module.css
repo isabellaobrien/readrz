@@ -36,3 +36,8 @@
 .dropdown:focus{
     box-shadow: none;
 }
+
+.icon{
+    display: inline-block;
+    padding-left: 2rem;
+}
