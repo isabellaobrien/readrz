@@ -1,11 +1,12 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import styles from '../../styles/Comment.module.css'
-import {axiosRes} from '../../api/axiosDefaults'
+import {axiosRes, axiosReq} from '../../api/axiosDefaults'
 import { OverlayTrigger, Tooltip, Dropdown } from 'react-bootstrap';
 import CommentEditForm from './CommentEditForm';
 import CreateReply from '../replies/CreateReply';
+import Reply from '../replies/Reply'
 const Comment = (props) => {
     const {
     id, 
@@ -26,7 +27,7 @@ const Comment = (props) => {
 
     const [showEditForm, setShowEditForm] = useState(false);
     const [showReplyForm, setShowReplyForm] = useState(false);
-    const [setReply] = useState({results: []})
+    const [reply, setReply] = useState({results: []})
 
     const handleCommentLike = async () => {
         try{
@@ -61,6 +62,22 @@ const Comment = (props) => {
         }
       };
 
+      useEffect(() => {
+      const handleMount = async () => {
+        try {
+          const [{ data: reply }] = await Promise.all([
+            axiosReq.get(`/replies/?comment=${id}`),
+          ]);
+          setReply(reply)
+          console.log(reply);
+        } catch (err) {
+          console.log(err);
+        }
+      };
+
+      handleMount();
+    }, [id]);
+
       const handleDelete = async () => {
         try{
             await axiosRes.delete(`/comments/${id}`);
@@ -80,6 +97,8 @@ const Comment = (props) => {
         }catch (err){
             console.log(err)
         }
+
+        
     }
 
     return (
@@ -155,19 +174,19 @@ const Comment = (props) => {
                 profile_id={profile_id}
                 profile_image={profile_image}
                 comment={id}
-                setComments={setComment}
+                setComment={setComment}
                 setReply={setReply}
               />
-              {/* {reply.results.length? (
+              {reply.results.length? (
                 reply.results.map((rep) => (
                   <Reply 
                     key={rep.id} 
                     {...rep}
-                    setComments={setComment}
+                    setComment={setComment}
                     setReply={setReply}
                   />
                 ))
-              ): null} */}
+              ): null}
               <button onClick={() => setShowReplyForm(false)} className={styles.btn}>hide</button>
             </>
             ) : (
