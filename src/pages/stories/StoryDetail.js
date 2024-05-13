@@ -1,6 +1,6 @@
 import React from 'react'
-import {Card, OverlayTrigger, Tooltip, Dropdown} from 'react-bootstrap'
-import styles from '../../styles/Story.module.css'
+import {Card, OverlayTrigger, Tooltip, Dropdown, Container, Row, Col} from 'react-bootstrap'
+import styles from '../../styles/StoryDetail.module.css'
 import {axiosRes} from '../../api/axiosDefaults'
 import {useCurrentUser} from '../../contexts/CurrentUserContext'
 import { Link, useHistory } from 'react-router-dom/cjs/react-router-dom.min'
@@ -71,72 +71,80 @@ const StoryDetail = (props) => {
 
 
   return (
-    <div className={styles.container}>
-        <Card style={{ width: '25rem' }}>
-            <Card.Body>
-                <Card.Title className={styles.profile}>
-                  <Link to={`/profiles/${profile_id}`}>
-                    <img src={profile_image} className={styles.img} alt="profile"/>
-                    <p className={styles.owner}>{owner}</p>
-                  </Link>
-                  <div className={styles.more}>
-                    {is_owner && (
-                      <Dropdown drop="up">
-                        <Dropdown.Toggle className={styles.dropdown} id="dropdown-basic">
-                          </Dropdown.Toggle>
-                          <Dropdown.Menu>
-                            <Dropdown.Item 
-                              onClick={handleEdit}>
-                              edit <i class="fa-solid fa-pen-to-square"></i>
-                            </Dropdown.Item>
-                            <Dropdown.Item
-                              onClick={handleDelete}>
-                              delete <i class="fa-solid fa-trash"></i>
-                            </Dropdown.Item>
-                          </Dropdown.Menu>
-                        </Dropdown>
+    <Container>
+      <Row>
+        <Col xs={12} md={{ span: 8, offset: 2 }}>
+            <div className={styles.container}>
+              <Card className={styles.card}>
+                  <Card.Body>
+                      <Card.Title className={styles.profile}>
+                        <Link to={`/profiles/${profile_id}`}>
+                          <img src={profile_image} className={styles.img} alt="profile"/>
+                          <p className={styles.owner}>{owner}</p>
+                        </Link>
+                        <div className={styles.more}>
+                          {is_owner && (
+                            <Dropdown drop="up">
+                              <Dropdown.Toggle className={styles.dropdown} id="dropdown-basic">
+                                </Dropdown.Toggle>
+                                <Dropdown.Menu>
+                                  <Dropdown.Item 
+                                    onClick={handleEdit}>
+                                    edit <i class="fa-solid fa-pen-to-square"></i>
+                                  </Dropdown.Item>
+                                  <Dropdown.Item
+                                    onClick={handleDelete}>
+                                    delete <i class="fa-solid fa-trash"></i>
+                                  </Dropdown.Item>
+                                </Dropdown.Menu>
+                              </Dropdown>
+                              )}
+                        </div>
+                      </Card.Title>
+                      <hr />
+                      <Card.Text>
+                        <h4 className={styles.title}>{title}</h4>
+                      </Card.Text>
+                      <Card.Text>
+                      {content}
+                      </Card.Text>
+                      <small className={styles.time}>{updated_at}</small>
+                      <hr />
+                      <div className={styles.icon}>
+                        {is_owner? (
+                          <OverlayTrigger
+                          placement="top"
+                          overlay={<Tooltip>You can't like your own story!</Tooltip>}>
+                            <i className="far fa-heart" />
+                          </OverlayTrigger>
+                        ) : like_id ? (
+                          <span onClick={handleUnlike}>
+                            <i class="fa-solid fa-heart"></i>
+                          </span>
+                        ) : currentUser ? (
+                          <span onClick={handleLike}>
+                            <i class="fa-regular fa-heart"></i>
+                          </span>
+                        ) : (
+                          <OverlayTrigger
+                          placement="top"
+                          overlay={<Tooltip>You need to log in to like stories</Tooltip>}>
+                            <i className="far fa-heart" />
+                          </OverlayTrigger>
                         )}
-                  </div>
-                </Card.Title>
-                <hr />
-                <Card.Text>
-                  <h6 className={styles.title}>{title}</h6>
-                </Card.Text>
-                <Card.Text>
-                {content}
-                </Card.Text>
-                <small className={styles.time}>{updated_at}</small>
-                <hr />
-                {is_owner? (
-                  <OverlayTrigger
-                  placement="top"
-                  overlay={<Tooltip>You can't like your own story!</Tooltip>}>
-                    <i className="far fa-heart" />
-                  </OverlayTrigger>
-                ) : like_id ? (
-                  <span onClick={handleUnlike}>
-                    <i class="fa-solid fa-heart"></i>
-                  </span>
-                ) : currentUser ? (
-                  <span onClick={handleLike}>
-                    <i class="fa-regular fa-heart"></i>
-                  </span>
-                ) : (
-                  <OverlayTrigger
-                  placement="top"
-                  overlay={<Tooltip>You need to log in to like stories</Tooltip>}>
-                    <i className="far fa-heart" />
-                  </OverlayTrigger>
-                )}
-                {likes_count}
-                <div className={styles.icon}>
-                  <i class="fa-regular fa-comment"></i>
-                  {comments_count}
-                </div>
-                
-            </Card.Body>
-        </Card>
-    </div>
+                        {likes_count}
+                      </div>
+                      <div className={styles.icon}>
+                        <i class="fa-regular fa-comment"></i>
+                        {comments_count}
+                      </div>
+                      
+                  </Card.Body>
+              </Card>
+            </div>
+        </Col>
+      </Row>
+    </Container>
   )
 }
 

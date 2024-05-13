@@ -34,8 +34,8 @@ function App() {
           />
           <Route exact path="/liked" render={() => (
               <StoryList message="No results found. Try liking a post." 
-              filter={`likes__owner__profile=${profile_id}&ordering=-likes__created_at&`}/>
-              
+              filter={`like__owner__profile=${profile_id}&ordering=-like__created_at&`}/>
+  
             )}
           />
           <Route exact path="/login" render={() => <LoginForm />} />

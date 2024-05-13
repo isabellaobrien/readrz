@@ -3,7 +3,7 @@ import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import styles from '../../styles/Comment.module.css'
 import {axiosRes, axiosReq} from '../../api/axiosDefaults'
-import { OverlayTrigger, Tooltip, Dropdown } from 'react-bootstrap';
+import { OverlayTrigger, Tooltip, Dropdown, Container,Row, Col } from 'react-bootstrap';
 import CommentEditForm from './CommentEditForm';
 import CreateReply from '../replies/CreateReply';
 import Reply from '../replies/Reply'
@@ -97,103 +97,110 @@ const Comment = (props) => {
         }catch (err){
             console.log(err)
         }
-
-        
     }
 
     return (
-    <div className={styles.container}>
-        <Link to={`/profiles/${profile_id}`}>
-            <img src={profile_image} className={styles.img} alt="profile"/>
-            <p className={styles.owner}>{owner}</p>
-        </Link>
-        <div className={styles.more}>
-            {is_owner && !showEditForm && (<Dropdown drop="up">
-              <Dropdown.Toggle className={styles.dropdown} id="dropdown-basic">
-                </Dropdown.Toggle>
-                <Dropdown.Menu>
-                  <Dropdown.Item 
-                    onClick={() => setShowEditForm(true)}>
-                    edit <i class="fa-solid fa-pen-to-square"></i>
-                  </Dropdown.Item>
-                  <Dropdown.Item
-                    onClick={(handleDelete)}>
-                    delete <i class="fa-solid fa-trash"></i>
-                  </Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>)}
-        </div>
-        <div>
-          {showEditForm? (
-            <CommentEditForm
-              id={id} 
-              profile_id={profile_id}
-              content={content}
-              profile_image={profile_image}
-              setComments={setComment}
-              setShowEditForm={setShowEditForm}
-            />
-          ) : (
-            <p className={styles.content}>{content}</p>
-          )}
-        </div >
-        <small className={styles.time}>{updated_at}</small>
-        <hr />
-        {is_owner? (
-            <OverlayTrigger
-            placement="top"
-            overlay={<Tooltip>You can't like your own story!</Tooltip>}>
-            <i className="far fa-heart" />
-            </OverlayTrigger>
-        ) : comment_like_id ? (
-            <span onClick={handleCommentUnlike}>
-            <i class="fa-solid fa-heart"></i>
-            </span>
-        ) : currentUser ? (
-            <span onClick={handleCommentLike}>
-            <i class="fa-regular fa-heart"></i>
-            </span>
-        ) : (
-            <OverlayTrigger
-            placement="top"
-            overlay={<Tooltip>You need to log in to like stories</Tooltip>}>
-            <i className="far fa-heart" />
-            </OverlayTrigger>
-        )}
-        {comment_likes_count}
-        <div className={styles.icon} onClick={() => setShowReplyForm(true)}>
-            <i class="fa-solid fa-arrow-right"></i>
-            {comment_reply_count}
-        </div>
-        <hr />
-        <small>{updated_at}</small>
-
-        {currentUser && showReplyForm ? (
-            <>
-              <CreateReply
-                profile_id={profile_id}
-                profile_image={profile_image}
-                comment={id}
-                setComment={setComment}
-                setReply={setReply}
-              />
-              {reply.results.length? (
-                reply.results.map((rep) => (
-                  <Reply 
-                    key={rep.id} 
-                    {...rep}
-                    setComment={setComment}
-                    setReply={setReply}
+    <Container>
+      <Row>
+        <Col xs={12} md={{ span: 8, offset: 2 }}>
+            <div className={styles.container}>
+              <Link to={`/profiles/${profile_id}`}>
+                  <img src={profile_image} className={styles.img} alt="profile"/>
+                  <p className={styles.owner}>{owner}</p>
+              </Link>
+              <div className={styles.more}>
+                  {is_owner && !showEditForm && (<Dropdown drop="up">
+                    <Dropdown.Toggle className={styles.dropdown} id="dropdown-basic">
+                      </Dropdown.Toggle>
+                      <Dropdown.Menu>
+                        <Dropdown.Item 
+                          onClick={() => setShowEditForm(true)}>
+                          edit <i class="fa-solid fa-pen-to-square"></i>
+                        </Dropdown.Item>
+                        <Dropdown.Item
+                          onClick={(handleDelete)}>
+                          delete <i class="fa-solid fa-trash"></i>
+                        </Dropdown.Item>
+                      </Dropdown.Menu>
+                    </Dropdown>)}
+              </div>
+              <div>
+                {showEditForm? (
+                  <CommentEditForm
+                    id={id} 
+                    profile_id={profile_id}
+                    content={content}
+                    profile_image={profile_image}
+                    setComments={setComment}
+                    setShowEditForm={setShowEditForm}
                   />
-                ))
-              ): null}
-              <button onClick={() => setShowReplyForm(false)} className={styles.btn}>hide</button>
-            </>
-            ) : (
-              null
-            )}
+                ) : (
+                  <p className={styles.content}>{content}</p>
+                )}
+              </div >
+              <small className={styles.time}>{updated_at}</small>
+              <br />
+              <br />
+              
+              <div className={styles.icon}>
+                {is_owner? (
+                    <OverlayTrigger
+                    placement="top"
+                    overlay={<Tooltip>You can't like your own comment!</Tooltip>}>
+                    <i className="far fa-heart" />
+                    </OverlayTrigger>
+                ) : comment_like_id ? (
+                    <span onClick={handleCommentUnlike}>
+                    <i class="fa-solid fa-heart"></i>
+                    </span>
+                ) : currentUser ? (
+                    <span onClick={handleCommentLike}>
+                    <i class="fa-regular fa-heart"></i>
+                    </span>
+                ) : (
+                    <OverlayTrigger
+                    placement="top"
+                    overlay={<Tooltip>You need to log in to like comments</Tooltip>}>
+                    <i className="far fa-heart" />
+                    </OverlayTrigger>
+                )}
+                {comment_likes_count}
 
-    </div>
+              </div>
+              
+              <div className={styles.icon} onClick={() => setShowReplyForm(true)}>
+                  <i class="fa-solid fa-arrow-right"></i>
+                  {comment_reply_count}
+              </div>
+
+              {currentUser && showReplyForm ? (
+                  <>
+                    <CreateReply
+                      profile_id={profile_id}
+                      profile_image={profile_image}
+                      comment={id}
+                      setComment={setComment}
+                      setReply={setReply}
+                    />
+                    {reply.results.length? (
+                      reply.results.map((rep) => (
+                        <Reply 
+                          key={rep.id} 
+                          {...rep}
+                          setComment={setComment}
+                          setReply={setReply}
+                        />
+                      ))
+                    ): null}
+                    <button onClick={() => setShowReplyForm(false)} className={styles.btn}>hide</button>
+                  </>
+                  ) : (
+                    null
+                  )}
+          </div>
+        </Col>
+      </Row>
+    </Container>
     )
 }
 

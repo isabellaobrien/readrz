@@ -1,0 +1,28 @@
+/* profile picture and username */
+.img{
+    width: 3rem;
+    margin-right: 1rem;
+}
+
+.owner{
+    display: inline-block;
+    font-weight: 400;
+    padding-right: 14rem;
+    color: black;
+}
+
+.profile{
+    text-align: left;
+}
+
+/* story detail card  */
+.card{
+    margin: auto;
+}
+
+/* like and comment icons */
+
+.icon{
+    display: inline-block;
+    padding-left: 2rem;
+}

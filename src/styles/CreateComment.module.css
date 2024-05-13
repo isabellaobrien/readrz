@@ -1,6 +1,12 @@
-.image{
-    width: 3rem;
+.btn{
+    margin: auto;
+    background-color: black;
+    color: white;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    border-radius: .25rem;
 }
-.container{
-    width: 25rem;
+.btn:hover{
+    background-color: #FFBF00;
+    color: black ;
 }

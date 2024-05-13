@@ -1,17 +1,33 @@
-.time{
-    text-align: left;
-}
-.container{
-    padding-bottom: 3rem;
-}
-
 .img{
     width: 3rem;
     margin-right: 1rem;
+    border-radius: 50%;
 }
 
 .owner{
     display: inline-block;
     font-weight: 400;
-    padding-right: 14rem;
+    /* padding-right: 14rem; */
+    color: black;
 }
+
+/* like and reply icons */
+.icon{
+    display: inline-block;
+    padding: 1rem;
+}
+
+.container{
+    padding: 3rem 5rem;
+    text-align: left;
+}
+
+.more{
+    display: inline-block;
+    margin-left: 4rem;
+}
+
+.time{
+    margin-bottom: 2rem;
+}
+

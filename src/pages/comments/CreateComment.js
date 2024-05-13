@@ -1,11 +1,10 @@
 import React, {useState} from 'react'
-import { Link } from 'react-router-dom/cjs/react-router-dom.min';
-import {Form, Button} from 'react-bootstrap'
+import {Form, Container, Row, Col} from 'react-bootstrap'
 import { axiosRes } from '../../api/axiosDefaults';
 import styles from '../../styles/CreateComment.module.css'
 
 const CreateComment = (props) => {
-    const {story, setStory, setComment, profile_image, profile_id} = props;
+    const {story, setStory, setComment} = props;
     const [content, setContent] = useState("");
     
     const handleChange = (event) => {
@@ -41,26 +40,28 @@ const CreateComment = (props) => {
     
 
   return (
-    <div className={styles.container}>
-        <p>comment section!</p>
-        <Form onSubmit={handleSubmit}>
-            <Form.Group controlId="formBasicEmail">
-                <Form.Label>
-                    <Link to={`/profiles/${profile_id}`}>
-                    <img src={profile_image} alt='profile' className={styles.image}/>
-                    </Link>
-                    write a comment
-                </Form.Label>
-                <Form.Control 
-                    type="textarea"
-                    onChange={handleChange}
-                    value={content} />
-            </Form.Group>
-            <Button variant="primary" type="submit" className="btn d-block ml-auto">
-                Submit
-            </Button>
-        </Form>
-    </div>
+    <Container>
+        <Row>
+            <Col xs={12} md={{ span: 8, offset: 2 }}>
+                <div className={styles.container}>
+                    <h2>Comment section</h2>
+                    <Form onSubmit={handleSubmit}>
+                        <Form.Group controlId="createCommentForm">
+                            <Form.Control 
+                                type="text"
+                                as="textarea"
+                                placeholder='comment on this story'
+                                onChange={handleChange}
+                                value={content} />
+                        </Form.Group>
+                        <button type="submit" className={styles.btn}>
+                            comment
+                        </button>
+                    </Form>
+                </div>
+            </Col>
+        </Row>
+    </Container>
   )
 }
 
