@@ -60,7 +60,7 @@ const Story = (props) => {
 
   return (
     <div className={styles.container}>
-        <Card style={{ width: '25rem' }}>
+        <Card>
             <Card.Body>
                 <Card.Title className={styles.profile}>
                   <Link to={`/profiles/${profile_id}`}>
