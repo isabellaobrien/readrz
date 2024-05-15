@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {axiosRes} from '../../api/axiosDefaults'
-import {Form, Button} from 'react-bootstrap'
+import {Form} from 'react-bootstrap'
 import styles from '../../styles/CreateComment.module.css'
 
 
@@ -44,9 +44,15 @@ const CommentEditForm = (props) => {
                     onChange={handleChange}
                     value={formContent} />
             </Form.Group>
-            <Button variant="primary" type="submit" className="btn d-block ml-auto">
-                Submit
-            </Button>
+            <div className={styles.btn_container}>
+                <button className={styles.btn} onClick={() => setShowEditForm(false)}>
+                    cancel
+                </button>
+                <button className={styles.btn}>
+                    edit
+                </button>
+            </div>
+            
         </Form>
     </div>
   )

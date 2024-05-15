@@ -117,32 +117,34 @@ const Reply = (props) => {
           )}
         </div >
         <small className={styles.time}>{updated_at}</small>
-        <hr />
-        {is_owner? (
-            <OverlayTrigger
-            placement="top"
-            overlay={<Tooltip>You can't like your own story!</Tooltip>}>
-            <i className="far fa-heart" />
-            </OverlayTrigger>
-        ) : reply_like_id ? (
-            <span onClick={handleReplyUnlike}>
-            <i class="fa-solid fa-heart"></i>
-            </span>
-        ) : currentUser ? (
-            <span onClick={handleReplyLike}>
-            <i class="fa-regular fa-heart"></i>
-            </span>
-        ) : (
-            <OverlayTrigger
-            placement="top"
-            overlay={<Tooltip>You need to log in to like stories</Tooltip>}>
-            <i className="far fa-heart" />
-            </OverlayTrigger>
-        )}
-        {reply_likes_count}
+        <br />
+        <br />
+        <div className={styles.icon}>
+          {is_owner? (
+              <OverlayTrigger
+              placement="top"
+              overlay={<Tooltip>You can't like your own reply!</Tooltip>}>
+              <i className="far fa-heart" />
+              </OverlayTrigger>
+          ) : reply_like_id ? (
+              <span onClick={handleReplyUnlike}>
+              <i class="fa-solid fa-heart"></i>
+              </span>
+          ) : currentUser ? (
+              <span onClick={handleReplyLike}>
+              <i class="fa-regular fa-heart"></i>
+              </span>
+          ) : (
+              <OverlayTrigger
+              placement="top"
+              overlay={<Tooltip>You need to log in to like replies</Tooltip>}>
+              <i className="far fa-heart" />
+              </OverlayTrigger>
+          )}
+          {reply_likes_count}
 
-        <hr />
-        <small>{updated_at}</small>
+        </div>
+        
     </div>
   )
 }

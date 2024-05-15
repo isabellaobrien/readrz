@@ -1,11 +1,10 @@
 import React,{useState} from 'react'
-import {Form, Button} from 'react-bootstrap'
+import {Form, Container, Row, Col} from 'react-bootstrap'
 import styles from '../../styles/CreateComment.module.css'
 import { axiosRes } from '../../api/axiosDefaults'
-import { Link } from 'react-router-dom/cjs/react-router-dom.min'
 
 const CreateReply = (props) => {
-    const {comment, setComment, setReply, profile_id, profile_image} = props;
+    const {comment, setComment, setReply} = props;
     const [content, setContent] = useState("");
     
     const handleChange = (event) => {
@@ -39,26 +38,27 @@ const CreateReply = (props) => {
     }
 
   return (
-    <div className={styles.container}>
-        <p>reply section!</p>
-        <Form onSubmit={handleSubmit}>
-            <Form.Group controlId="formBasicEmail">
-                <Form.Label>
-                    <Link to={`/profiles/${profile_id}`}>
-                    <img src={profile_image} alt='profile' className={styles.image}/>
-                    </Link>
-                    write a reply
-                </Form.Label>
-                <Form.Control 
-                    type="textarea"
-                    onChange={handleChange}
-                    value={content} />
-            </Form.Group>
-            <Button variant="primary" type="submit" className="btn d-block ml-auto">
-                Submit
-            </Button>
-        </Form>
-    </div>
+    <Container>
+        <Row>
+            <Col xs={12} md={{ span: 8, offset: 2 }}>
+                <div className={styles.container}>
+                    <h4>replies</h4>
+                    <Form onSubmit={handleSubmit}>
+                        <Form.Group controlId="CreateReplyForm">
+                            <Form.Control 
+                                type="text"
+                                as='textarea'
+                                onChange={handleChange}
+                                value={content} />
+                        </Form.Group>
+                        <button type='submit' className={styles.btn}>
+                            reply
+                        </button>
+                    </Form>
+                </div>
+            </Col>
+        </Row>
+    </Container>
   )
 }
 

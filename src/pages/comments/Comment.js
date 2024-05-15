@@ -45,6 +45,7 @@ const Comment = (props) => {
         }
   
       }
+      
   
       const handleCommentUnlike = async () => {
         try {
@@ -191,7 +192,7 @@ const Comment = (props) => {
                           setReply={setReply}
                         />
                       ))
-                    ): null}
+                    ): <p>no replies yet!</p>}
                     <button onClick={() => setShowReplyForm(false)} className={styles.btn}>hide</button>
                   </>
                   ) : (

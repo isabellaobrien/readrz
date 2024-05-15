@@ -7,7 +7,6 @@
 .owner{
     display: inline-block;
     font-weight: 400;
-    /* padding-right: 14rem; */
     color: black;
 }
 
@@ -27,7 +26,31 @@
     margin-left: 4rem;
 }
 
+.dropdown{
+    background-color: #FFBF00;
+    border-color: transparent;
+}
+
+.dropdown:hover{
+    background-color: black;
+}
+
+
 .time{
     margin-bottom: 2rem;
 }
+
+.btn{
+    margin: auto;
+    background-color: black;
+    color: white;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    border-radius: .25rem;
+}
+.btn:hover{
+    background-color: #FFBF00;
+    color: black ;
+}
+
 

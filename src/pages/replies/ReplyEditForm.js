@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
-import {Form, Button} from 'react-bootstrap'
+import {Form} from 'react-bootstrap'
 import { axiosRes } from '../../api/axiosDefaults';
-import styles from '../../styles/Comment.module.css'
+import styles from '../../styles/CreateComment.module.css'
 const ReplyEditForm = (props) => {
     const {id, content, setShowReplyEditForm, setReply} = props;
     const [formContent, setFormContent] = useState(content);
@@ -41,9 +41,14 @@ const ReplyEditForm = (props) => {
                     onChange={handleChange}
                     value={formContent} />
             </Form.Group>
-            <Button variant="primary" type="submit" className="btn d-block ml-auto">
-                Submit
-            </Button>
+            <div className={styles.btn_container}>
+                <button className={styles.btn} onClick={() => setShowReplyEditForm(false)}>
+                    cancel
+                </button>
+                <button className={styles.btn}>
+                    edit
+                </button>
+            </div>
         </Form>
     </div>
   )
