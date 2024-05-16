@@ -11,8 +11,8 @@ import CreateStory from './pages/stories/CreateStory';
 import StoryPage from './pages/stories/StoryPage';
 import StoryList from './pages/stories/StoryList';
 import { useCurrentUser } from './contexts/CurrentUserContext';
-import StoryEditForm
- from './pages/stories/StoryEditForm';
+import StoryEditForm from './pages/stories/StoryEditForm';
+import ProfilePage from './pages/profiles/ProfilePage';
 function App() {
   const currentUser = useCurrentUser();
   const profile_id = currentUser?.profile_id || "";
@@ -43,6 +43,7 @@ function App() {
           <Route exact path="/create-story" render={() => <CreateStory />} />
           <Route exact path="/stories/:id" render={() => <StoryPage />}></Route>
           <Route exact path="/stories/:id/edit" render={() => <StoryEditForm />}></Route>
+          <Route exact path="/profiles/:id" render={() => <ProfilePage />}></Route>
           <Route render={() => <p>Page not found!</p>} />
         </Switch>
       </Container>

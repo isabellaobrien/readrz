@@ -1,0 +1,22 @@
+.img{
+    width: 3rem;
+    margin-right: 1rem;
+}
+
+.owner{
+    display: inline-block;
+    color: black;
+}
+
+.btn{
+    margin: auto;
+    background-color: black;
+    color: white;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    border-radius: .25rem;
+}
+.btn:hover{
+    background-color: #FFBF00;
+    color: black ;
+}

@@ -70,7 +70,7 @@ const Story = (props) => {
                 </Card.Title>
                 
                 <hr />
-                <Link to={`/stories/${id}`}>
+                <Link to={`/stories/${id}`} className={styles.content}>
                   <Card.Text>
                     <h6 className={styles.title}>{title}</h6>
                   </Card.Text>

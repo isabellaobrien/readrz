@@ -5,7 +5,6 @@ import { axiosReq } from '../../api/axiosDefaults';
 import { Container, Row, Col } from 'react-bootstrap';
 import Asset from '../../components/Asset';
 import NoResults from '../../assets/no-result-found.avif'
-import styles from '../../styles/StoryList.module.css'
 import PopularProfiles from '../profiles/PopularProfiles';
 
 const StoryList = ({ message, filter = "" }) => {

@@ -23,7 +23,7 @@ function NavBar() {
       <Nav.Link href="/liked" className={styles.link}>liked</Nav.Link>
       <Nav.Link href="/create-story" className={styles.link}>create story</Nav.Link>
       <Nav.Link to='/' onClick={handleSignOut} className={styles.link}>log out</Nav.Link>
-      {currentUser?.username}
+      <Nav.Link href={`/profiles/${currentUser?.profile_id}`} className={styles.link}>{currentUser?.username}</Nav.Link>
     </>
   );
   const loggedOut = (
