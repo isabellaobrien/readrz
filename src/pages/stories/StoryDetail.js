@@ -16,6 +16,8 @@ const StoryDetail = (props) => {
     likes_count,
     updated_at,
     like_id,
+    save_id,
+    save_count,
     setStory
   } = props
 
@@ -68,6 +70,39 @@ const StoryDetail = (props) => {
       console.log(err);
     }
   };
+  const handleSave = async() => {
+    try{
+      const {data} = await axiosRes.post("/saves/", {story : id});
+      setStory((prevStories) => ({
+        ...prevStories,
+        results: prevStories.results.map((story) => {
+          return story.id === id ? 
+          {...story, save_count: story.save_count + 1, save_id: data.id} :
+          story
+        })
+      }))
+    }catch (err){
+      console.log(err)
+    }
+
+  }
+
+  const handleUnsave = async() => {
+    try{
+      await axiosRes.delete(`/saves/${save_id}/`);
+      setStory((prevStories) => ({
+        ...prevStories,
+        results: prevStories.results.map((story) => {
+          return story.id === id
+            ? { ...story, save_count: story.save_count - 1, save_id: null }
+            : story;
+        }),
+      }));
+    }catch (err){
+      console.log(err)
+    }
+
+  }
 
 
   return (
@@ -137,6 +172,30 @@ const StoryDetail = (props) => {
                       <div className={styles.icon}>
                         <i class="fa-regular fa-comment"></i>
                         {comments_count}
+                      </div>
+                      <div className={styles.icon}>
+                        {is_owner? (
+                          <OverlayTrigger
+                          placement="top"
+                          overlay={<Tooltip>No need to save your owne story, all your stories can be found in the profile page</Tooltip>}>
+                            <i class="fa-regular fa-bookmark"></i>
+                          </OverlayTrigger>
+                        ) : save_id ? (
+                          <span onClick={handleUnsave}>
+                            <i class="fa-solid fa-bookmark"></i>
+                          </span>
+                        ) : currentUser ? (
+                          <span onClick={handleSave}>
+                            <i class="fa-regular fa-bookmark"></i>
+                          </span>
+                        ) : (
+                          <OverlayTrigger
+                          placement="top"
+                          overlay={<Tooltip>You need to log in to save stories</Tooltip>}>
+                            <i class="fa-regular fa-bookmark"></i>
+                          </OverlayTrigger>
+                        )}
+                        {save_count}
                       </div>
                       
                   </Card.Body>

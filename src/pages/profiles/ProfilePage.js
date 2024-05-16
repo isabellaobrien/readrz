@@ -8,9 +8,10 @@ import Story from '../stories/Story';
 import Asset from '../../components/Asset';
 import NoResults from '../../assets/no-result-found.avif'
 import styles from '../../styles/ProfilePage.module.css'
+import SavedStories from '../stories/SavedStories';
 
 const ProfilePage = () => {
-    const [hasLoaded, setHasLoaded] = useState(false);
+  const [hasLoaded, setHasLoaded] = useState(false);
   const currentUser = useCurrentUser();
   const { id } = useParams();
   const {setProfileData, handleFollow, handleUnfollow}= useSetProfileData();
@@ -42,10 +43,10 @@ const ProfilePage = () => {
   return (
     <Container>
         <Row>
-            <Col xs={12} md={3}>
+            <Col xs={12} md={3} className={styles.col}>
                 <img src={profile?.image} alt='profile'/>
             </Col>
-            <Col md={4} className={styles.info}>
+            <Col md={4} className={styles.info} className={styles.col}>
                 <h3>{profile?.owner}</h3>
                 {currentUser &&
                 !is_owner &&
@@ -77,11 +78,19 @@ const ProfilePage = () => {
                     </Col>
                 </Row>
             </Col>
+            <Col md={5} className={styles.col}>
+                <hr />
+                    <p>stories I've saved</p>
+                <hr />   
+                <SavedStories message="you have not saved any stories yet. Try and save one!"
+                filter={`save__owner__profile=${profile?.id}&ordering=-like__created_at&`}/>
+
+            </Col>
             
         </Row>
         
         <Row>
-            <Col xs={12} md={8}>
+            <Col xs={12} md={7}>
             <hr />
                 <p>my stories</p>
             <hr />
