@@ -17,3 +17,14 @@
 .col{
     height: 16rem;
 }
+
+.img{
+    width: 15rem;
+    height: 15rem;
+    border-radius: 50%;
+    object-fit:contain;
+}
+
+.about_me{
+    padding-top: 2rem;
+}

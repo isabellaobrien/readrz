@@ -23,3 +23,8 @@
     border-radius: 0.25rem;
     border: black solid 1px;
 }
+
+.img{
+    border-radius: 50%;
+    width: 15rem;
+}

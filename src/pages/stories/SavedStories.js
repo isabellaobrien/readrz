@@ -4,7 +4,6 @@ import Story from './Story';
 import { axiosReq } from '../../api/axiosDefaults';
 import { Container, Row, Col } from 'react-bootstrap';
 import Asset from '../../components/Asset';
-import NoResults from '../../assets/no-result-found.avif'
 
 const SavedStories = ({ message, filter = "" }) => {
     const [story, setStory] = useState({results:[]})

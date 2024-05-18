@@ -9,6 +9,8 @@ import Asset from '../../components/Asset';
 import NoResults from '../../assets/no-result-found.avif'
 import styles from '../../styles/ProfilePage.module.css'
 import SavedStories from '../stories/SavedStories';
+import ProfileEditDropdown from './ProfileEditDropdown';
+
 
 const ProfilePage = () => {
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -44,10 +46,12 @@ const ProfilePage = () => {
     <Container>
         <Row>
             <Col xs={12} md={3} className={styles.col}>
-                <img src={profile?.image} alt='profile'/>
+                <img src={profile?.image} alt='profile' className={styles.img}/>
+                <p>{profile?.name}</p>
             </Col>
-            <Col md={4} className={styles.info} className={styles.col}>
-                <h3>{profile?.owner}</h3>
+            <Col md={4} className={styles.col}>
+                <h3 className={styles.info}>{profile?.owner}</h3>
+                {profile?.is_owner && <ProfileEditDropdown id={profile?.id} />}
                 {currentUser &&
                 !is_owner &&
                 (profile?.following_id ? (
@@ -77,6 +81,7 @@ const ProfilePage = () => {
                     <div>following</div>
                     </Col>
                 </Row>
+                <p className={styles.about_me}>" {profile?.about_me} "</p>
             </Col>
             <Col md={5} className={styles.col}>
                 <hr />
