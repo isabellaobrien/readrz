@@ -17,6 +17,8 @@ import ProfileImageEditForm from './pages/profiles/ProfileImageEditForm';
 import ProfileNameEditForm from './pages/profiles/ProfileNameEditForm';
 import ProfileAboutMeEditForm from './pages/profiles/ProfileAboutMeEditForm';
 import EditUsernameForm from './pages/profiles/EditUsernameForm';
+import EditPasswordForm from './pages/profiles/EditPasswordForm';
+
 function App() {
   const currentUser = useCurrentUser();
   const profile_id = currentUser?.profile_id || "";
@@ -52,6 +54,7 @@ function App() {
           <Route exact path="/profiles/:id/edit/name" render={() => <ProfileNameEditForm />}></Route>
           <Route exact path="/profiles/:id/edit/about-me" render={() => <ProfileAboutMeEditForm />}></Route>
           <Route exact path="/profiles/:id/edit/username" render={() => <EditUsernameForm />}></Route>
+          <Route exact path="/profiles/:id/edit/password" render={() => <EditPasswordForm />}></Route>
           <Route render={() => <p>Page not found!</p>} />
         </Switch>
       </Container>

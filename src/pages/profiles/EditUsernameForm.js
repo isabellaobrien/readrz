@@ -62,7 +62,7 @@ const EditUsernameForm = () => {
                 cancel
             </button>
             <button type="submit" className={styles.btn}>
-                edit profile
+                edit username
             </button>
             {errors.non_field_errors?.map((message, idx) => (
                 <Alert key={idx} variant="warning">
