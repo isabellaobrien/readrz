@@ -46,8 +46,9 @@ const ProfilePage = () => {
     <Container>
         <Row>
             <Col xs={12} md={3} className={styles.col}>
-                <img src={profile?.image} alt='profile' className={styles.img}/>
-                <p>{profile?.name}</p>
+                <div className={styles.container}>
+                    <img src={profile?.image} alt='profile'/>
+                </div>
             </Col>
             <Col md={4} className={styles.col}>
                 <h3 className={styles.info}>{profile?.owner}</h3>
@@ -81,7 +82,9 @@ const ProfilePage = () => {
                     <div>following</div>
                     </Col>
                 </Row>
+                
                 <p className={styles.about_me}>" {profile?.about_me} "</p>
+                <p>{profile?.name}</p>
             </Col>
             <Col md={5} className={styles.col}>
                 <hr />
@@ -95,7 +98,7 @@ const ProfilePage = () => {
         </Row>
         
         <Row>
-            <Col xs={12} md={7}>
+            <Col xs={12} md={7} className={styles.stories}>
             <hr />
                 <p>my stories</p>
             <hr />

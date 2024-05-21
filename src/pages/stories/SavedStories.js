@@ -5,7 +5,7 @@ import { axiosReq } from '../../api/axiosDefaults';
 import { Container, Row, Col } from 'react-bootstrap';
 import Asset from '../../components/Asset';
 
-const SavedStories = ({ message, filter = "" }) => {
+const SavedStories = ({ mobile, message, filter = "" }) => {
     const [story, setStory] = useState({results:[]})
     const [hasLoaded, setHasLoaded] = useState(false);
     const { pathname } = useLocation();
@@ -25,7 +25,7 @@ const SavedStories = ({ message, filter = "" }) => {
         fetchStories();
       }, [filter, pathname]);
   return (
-    <Container>
+    <Container >
       <Row>
         <Col>
           {hasLoaded? (

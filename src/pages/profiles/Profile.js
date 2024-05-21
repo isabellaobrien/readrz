@@ -19,7 +19,9 @@ const Profile = (props) => {
       >
         <div>
           <Link className="align-self-center" to={`/profiles/${id}`}>
-            <img src={image} alt='profile' className={styles.img}/>
+            <div className={styles.img_container}>
+              <img src={image} alt='profile'/>
+            </div>
             <p className={styles.owner}>{owner}</p>
           </Link>
         </div>

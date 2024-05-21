@@ -1,8 +1,16 @@
 /* profile picture and username */
-.img{
-    width: 3rem;
-    margin-right: 1rem;
+.img_container { 
+    position: relative; 
+    width: 3rem; 
+    height: 3rem; 
+    overflow: hidden; 
+    border-radius: 50%;
+} 
+.img_container img { 
+    width: 100%; 
+    height: auto;
 }
+
 
 .owner{
     display: inline-block;

@@ -5,6 +5,7 @@ import StoryDetail from './StoryDetail'
 import CreateComment from '../comments/CreateComment'
 import { useCurrentUser } from '../../contexts/CurrentUserContext'
 import Comment from '../comments/Comment'
+import styles from '../../styles/StoryPage.module.css'
 
 const StoryPage = () => {
     const {id} = useParams();
@@ -34,28 +35,30 @@ const StoryPage = () => {
   return (
     <div>
         <StoryDetail {...story.results[0]} setStory={setStory} />
-        {currentUser? (
-          <CreateComment
-            profile_id={currentUser.profile_id}
-            profile_image={profile_image}
-            story={id}
-            setStory={setStory}
-            setComment={setComment}
-          />) : null}
-          {comment.results.length? (
-            comment.results.map((comment) => (
-              <Comment 
-                key={comment.id} 
-                {...comment}
-                setStory={setStory}
-                setComment={setComment}
-              />
-            ))
-          ) : currentUser ? (
-            <p>no comments yet, make one!</p>
-          ) : (
-            <p>no comments yet.</p>
-          )}
+        <div className={styles.comment_box}>
+          {currentUser? (
+            <CreateComment
+              profile_id={currentUser.profile_id}
+              profile_image={profile_image}
+              story={id}
+              setStory={setStory}
+              setComment={setComment}
+            />) : null}
+            {comment.results.length? (
+              comment.results.map((comment) => (
+                <Comment 
+                  key={comment.id} 
+                  {...comment}
+                  setStory={setStory}
+                  setComment={setComment}
+                />
+              ))
+            ) : currentUser ? (
+              <p>no comments yet, make one!</p>
+            ) : (
+              <p>no comments yet.</p>
+            )}
+        </div>
     </div>
   )
 }

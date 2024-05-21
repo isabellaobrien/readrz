@@ -46,7 +46,6 @@ const Comment = (props) => {
   
       }
       
-  
       const handleCommentUnlike = async () => {
         try {
           await axiosRes.delete(`/comment_likes/${comment_like_id}/`);
@@ -106,8 +105,10 @@ const Comment = (props) => {
         <Col xs={12} md={{ span: 8, offset: 2 }}>
             <div className={styles.container}>
               <Link to={`/profiles/${profile_id}`}>
-                  <img src={profile_image} className={styles.img} alt="profile"/>
-                  <p className={styles.owner}>{owner}</p>
+                <div className={styles.img_container} >
+                  <img src={profile_image} alt="profile"/>
+                </div>
+                <p className={styles.owner}>{owner}</p>
               </Link>
               <div className={styles.more}>
                   {is_owner && !showEditForm && (<Dropdown drop="up">

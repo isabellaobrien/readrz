@@ -83,8 +83,10 @@ const Reply = (props) => {
   return (
     <div className={styles.container}>
         <Link to={`/profiles/${profile_id}`}>
-            <img src={profile_image} className={styles.img} alt="profile"/>
-            <p className={styles.owner}>{owner}</p>
+          <div className={styles.img_container}>
+            <img src={profile_image} alt="profile"/>
+          </div> 
+          <p className={styles.owner}>{owner}</p>
         </Link>
         <div className={styles.more}>
             {is_owner && !showReplyEditForm && (<Dropdown drop="up">

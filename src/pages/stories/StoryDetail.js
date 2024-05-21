@@ -114,7 +114,9 @@ const StoryDetail = (props) => {
                   <Card.Body>
                       <Card.Title className={styles.profile}>
                         <Link to={`/profiles/${profile_id}`}>
-                          <img src={profile_image} className={styles.img} alt="profile"/>
+                          <div className={styles.img_container}>
+                            <img src={profile_image} alt="profile"/>
+                          </div>
                           <p className={styles.owner}>{owner}</p>
                         </Link>
                         <div className={styles.more}>

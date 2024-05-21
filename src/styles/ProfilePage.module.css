@@ -18,12 +18,23 @@
     height: 16rem;
 }
 
-.img{
-    width: 15rem;
-    height: 15rem;
-    border-radius: 50%;
-    object-fit:contain;
+.stories{
+    height: 16rem;
+    padding-top: 8rem;
 }
+
+.container { 
+    position: relative; 
+    width: 12rem; 
+    height: 12rem; 
+    overflow: hidden; 
+    border-radius: 50%; 
+} 
+.container img { 
+    width: 100%; 
+    height: auto;
+}
+
 
 .about_me{
     padding-top: 2rem;

@@ -44,7 +44,7 @@ const CreateComment = (props) => {
         <Row>
             <Col xs={12} md={{ span: 8, offset: 2 }}>
                 <div className={styles.container}>
-                    <h2>Comment section</h2>
+                    <p>Comment section</p>
                     <Form onSubmit={handleSubmit}>
                         <Form.Group controlId="createCommentForm">
                             <Form.Control 

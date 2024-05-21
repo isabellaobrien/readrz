@@ -100,9 +100,13 @@ const Story = (props) => {
             <Card.Body>
                 <Card.Title className={styles.profile}>
                   <Link to={`/profiles/${profile_id}`}>
-                    <img src={profile_image} className={styles.img} alt="profile"/>
+                    <div className={styles.img_container}>
+                      <img src={profile_image} alt="profile"/>
+                    </div>
                     <p className={styles.owner}>{owner}</p>
                   </Link>
+                  
+                  
                 </Card.Title>
                 
                 <hr />
@@ -138,11 +142,14 @@ const Story = (props) => {
                   </OverlayTrigger>
                 )}
                 {likes_count}
-
-                <div className={styles.icon}>
-                  <i class="fa-regular fa-comment"></i>
-                  {comments_count}
-                </div>
+                
+                <Link to={`/stories/${id}`} className={styles.link}>
+                  <div className={styles.icon}>
+                    <i class="fa-regular fa-comment"></i>
+                    {comments_count}
+                  </div>
+                </Link>
+                
                 <div className={styles.icon}>
                   {is_owner? (
                     <OverlayTrigger
