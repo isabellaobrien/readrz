@@ -43,7 +43,7 @@ const CreateStory = () => {
       };
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container } title='createstory'>
         <Form onSubmit={handleSubmit}>
             <p className={styles.title}>create a story</p>
             <Form.Group controlId="title" className={styles.input}>

@@ -34,7 +34,7 @@ const SignUpForm = () => {
         }
     }
   return (
-    <div className={styles.container}>
+    <div className={styles.container} title="signupform">
         <Form onSubmit={handleSubmit}>
             <p className={styles.title}>sign up</p>
             <Form.Group controlId="username" className={styles.input}>

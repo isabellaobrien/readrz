@@ -59,7 +59,7 @@ const StoryEditForm = () => {
       };
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} title='editstory'>
         <Form onSubmit={handleSubmit}>
             <p className={styles.title}>edit your story</p>
             <Form.Group controlId="title" className={styles.input}>

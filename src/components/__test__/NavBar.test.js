@@ -10,11 +10,13 @@ test('renders NavBar', () => {
         </Router>
     )
 
-    const signInLink = screen.getByRole('link', {name: 'log in'})
-    expect(signInLink).toBeInTheDocument()
+    const logInLink = screen.getByRole('link', {name: 'log in'})
+    expect(logInLink).toBeInTheDocument()
+    const signUpLink = screen.getByRole('link', {name: 'sign up'})
+    expect(signUpLink).toBeInTheDocument()
 })
 
-test("renders Sign in and Sign up buttons again on log out", async () => {
+test("renders log in and sign up buttons again on log out", async () => {
     render(
       <Router>
         <CurrentUserProvider>

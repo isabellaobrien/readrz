@@ -59,7 +59,7 @@ const ProfileNameEditForm = () => {
         }
       };
   return (
-    <div className={styles.container}>
+    <div className={styles.container} title='editname'>
         <Form onSubmit={handleSubmit}>
             <p className={styles.title}>edit your name</p>
             <Form.Group controlId="name" className={styles.input}>

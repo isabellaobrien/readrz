@@ -60,7 +60,7 @@ const ProfileImageEditForm = () => {
     }
   };
   return (
-    <div className={styles.container}>
+    <div className={styles.container} title='editimage'>
         <Form onSubmit={handleSubmit}>
             <p className={styles.title}>edit your profile</p>
             <Form.Group>

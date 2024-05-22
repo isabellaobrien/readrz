@@ -42,7 +42,7 @@ const LoginForm = () => {
 
     
   return (
-    <div className={styles.container}>
+    <div className={styles.container} title="loginform">
         <Form onSubmit={handleSubmit}>
             <p className={styles.title}>log in</p>
             <Form.Group controlId="username" className={styles.input}>
