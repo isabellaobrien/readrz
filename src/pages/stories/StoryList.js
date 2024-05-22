@@ -6,6 +6,8 @@ import { Container, Row, Col } from 'react-bootstrap';
 import Asset from '../../components/Asset';
 import NoResults from '../../assets/no-result-found.avif'
 import PopularProfiles from '../profiles/PopularProfiles';
+import InfiniteScroll from 'react-infinite-scroll-component';
+import { fetchMoreData } from '../../utils/utils';
 
 const StoryList = ({ message, filter = "" }) => {
     const [story, setStory] = useState({results:[]})
@@ -33,9 +35,15 @@ const StoryList = ({ message, filter = "" }) => {
         <PopularProfiles mobile />
           {hasLoaded? (
               <>
-              {story.results.length? story.results.map((story) => (
-                  <Story key={story.id} {...story} setStory={setStory}/>
-              )) : (
+              {story.results.length? <InfiniteScroll
+              children={story.results.map((story) => (
+                <Story key={story.id} {...story} setStory={setStory}/>
+              ))}
+              dataLength={story.results.length}
+              loader={<Asset spinner />}
+              hasMore={!!story.next}
+              next={() => fetchMoreData(story, setStory)}
+              /> : (
                   <Container>
                           <Asset src={NoResults} message={message} />
                   </Container>
