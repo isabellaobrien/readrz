@@ -3,8 +3,10 @@ import styles from '../../styles/Forms.module.css'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 import { axiosReq } from '../../api/axiosDefaults'
 import {Form, Alert} from 'react-bootstrap'
+import { useRedirect } from '../../hooks/useRedirect'
 
 const CreateStory = () => {
+    useRedirect('loggedOut')
     const [StoryData, setStoryData] = useState({
         title: "",
         description: "",

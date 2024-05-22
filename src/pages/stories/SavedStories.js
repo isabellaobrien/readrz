@@ -4,8 +4,10 @@ import Story from './Story';
 import { axiosReq } from '../../api/axiosDefaults';
 import { Container, Row, Col } from 'react-bootstrap';
 import Asset from '../../components/Asset';
+import InfiniteScroll from 'react-infinite-scroll-component';
+import { fetchMoreData } from '../../utils/utils';
 
-const SavedStories = ({ mobile, message, filter = "" }) => {
+const SavedStories = ({ message, filter = "" }) => {
     const [story, setStory] = useState({results:[]})
     const [hasLoaded, setHasLoaded] = useState(false);
     const { pathname } = useLocation();
@@ -30,9 +32,15 @@ const SavedStories = ({ mobile, message, filter = "" }) => {
         <Col>
           {hasLoaded? (
               <>
-              {story.results.length? story.results.map((story) => (
-                  <Story key={story.id} {...story} setStory={setStory}/>
-              )) : (
+              {story.results.length? <InfiniteScroll
+              children={story.results.map((story) => (
+                <Story key={story.id} {...story} setStory={setStory}/>
+              ))}
+              dataLength={story.results.length}
+              loader={<Asset spinner />}
+              hasMore={!!story.next}
+              next={() => fetchMoreData(story, setStory)}
+              /> : (
                   <Container>
                           <Asset message={message} />
                   </Container>
