@@ -17,6 +17,7 @@
 .owner{
     font-weight: 400;
     color: black;
+    padding-left: 0.5rem;
 }
 
 .title{
@@ -46,8 +47,9 @@
 
 .icon{
     display: inline-block;
-    padding-left: 2rem;
+    padding: 1rem;
 }
+
 
 .content, .content:hover{
     color: black;
@@ -59,3 +61,7 @@
     text-decoration: none;
 }
 
+.card{
+    border: #00BFFF solid 2px;
+    border-radius: 0.5rem;
+}

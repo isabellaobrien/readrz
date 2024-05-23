@@ -1,12 +1,30 @@
-import React from 'react'
+import React, {useState, useRef, useEffect} from 'react'
 import {Navbar, Nav} from 'react-bootstrap'
 import styles from "../styles/NavBar.module.css";
 import { useCurrentUser, useSetCurrentUser } from '../contexts/CurrentUserContext';
 import axios from 'axios'
 
+
 function NavBar() {
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
+
+  const [expanded, setExpanded] = useState(false);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (ref.current && !ref.current.contains(event.target)) {
+        setExpanded(false);
+      }
+    };
+
+    document.addEventListener("mouseup", handleClickOutside);
+    return () => {
+      document.removeEventListener("mouseup", handleClickOutside);
+    };
+  }, [ref]);
+
 
   const handleSignOut = async () => {
     try {
@@ -23,7 +41,12 @@ function NavBar() {
       <Nav.Link href="/liked" className={styles.link}>liked</Nav.Link>
       <Nav.Link href="/create-story" className={styles.link}>create story</Nav.Link>
       <Nav.Link to='/' onClick={handleSignOut} className={styles.link}>log out</Nav.Link>
-      <Nav.Link href={`/profiles/${currentUser?.profile_id}`} className={styles.link}><p text='profile'>{currentUser?.username}</p></Nav.Link>
+      <Nav.Link href={`/profiles/${currentUser?.profile_id}`} className={styles.link}>
+        <div>
+          <i class="fa-solid fa-user"></i>
+          <p className={styles.user}>{currentUser?.username}</p>
+        </div>
+      </Nav.Link>
     </>
   );
   const loggedOut = (
@@ -38,9 +61,9 @@ function NavBar() {
 
   return (
     <>
-        <Navbar expand="lg" className={styles.nav}>
+        <Navbar expaded={expanded} expand="lg" className={styles.nav}>
             <Navbar.Brand href="/" className={styles.logo}>Readrz.</Navbar.Brand>
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Toggle ref={ref} onClick={() => setExpanded(!expanded)} aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav
                 className="ml-auto"

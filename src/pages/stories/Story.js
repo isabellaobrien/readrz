@@ -96,10 +96,10 @@ const Story = (props) => {
 
   return (
     <div className={styles.container}>
-        <Card>
+        <Card className={styles.card}>
             <Card.Body>
                 <Card.Title className={styles.profile}>
-                  <Link to={`/profiles/${profile_id}`}>
+                  <Link  to={`/profiles/${profile_id}`} className={styles.link}>
                     <div className={styles.img_container}>
                       <img src={profile_image} alt="profile"/>
                     </div>
@@ -120,28 +120,31 @@ const Story = (props) => {
                 </Link>
                 <small className={styles.time}>{updated_at}</small>
                 <hr />
-                {is_owner? (
-                  <OverlayTrigger
-                  placement="top"
-                  overlay={<Tooltip>You can't like your own story!</Tooltip>}>
-                    <i className="far fa-heart" />
-                  </OverlayTrigger>
-                ) : like_id ? (
-                  <span onClick={handleUnlike}>
-                    <i class="fa-solid fa-heart"></i>
-                  </span>
-                ) : currentUser ? (
-                  <span onClick={handleLike}>
-                    <i class="fa-regular fa-heart"></i>
-                  </span>
-                ) : (
-                  <OverlayTrigger
-                  placement="top"
-                  overlay={<Tooltip>You need to log in to like stories</Tooltip>}>
-                    <i className="far fa-heart" />
-                  </OverlayTrigger>
-                )}
-                {likes_count}
+                <div className={styles.icon}>
+                  {is_owner? (
+                    <OverlayTrigger
+                    placement="top"
+                    overlay={<Tooltip>You can't like your own story!</Tooltip>}>
+                      <i className="far fa-heart" />
+                    </OverlayTrigger>
+                  ) : like_id ? (
+                    <span onClick={handleUnlike}>
+                      <i class="fa-solid fa-heart"></i>
+                    </span>
+                  ) : currentUser ? (
+                    <span onClick={handleLike}>
+                      <i class="fa-regular fa-heart"></i>
+                    </span>
+                  ) : (
+                    <OverlayTrigger
+                    placement="top"
+                    overlay={<Tooltip>You need to log in to like stories</Tooltip>}>
+                      <i className="far fa-heart" />
+                    </OverlayTrigger>
+                  )}
+                  {likes_count}
+                </div>
+                
                 
                 <Link to={`/stories/${id}`} className={styles.link}>
                   <div className={styles.icon}>

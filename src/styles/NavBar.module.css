@@ -11,3 +11,9 @@
 .link{
     font-size: 1.15rem;
 }
+
+
+.user{
+    display: inline-block;
+    padding-left: 10px;
+}

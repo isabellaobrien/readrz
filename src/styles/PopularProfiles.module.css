@@ -1,0 +1,11 @@
+.container{
+    border-radius: 0.5rem;
+    border: 3px solid #FF4F00;
+    padding: 1rem;
+}
+
+.title{
+    font-family: 'Varela Round', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+}

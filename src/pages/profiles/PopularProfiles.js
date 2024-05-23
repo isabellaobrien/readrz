@@ -3,6 +3,7 @@ import { Container } from 'react-bootstrap'
 import Asset from '../../components/Asset';
 import Profile from './Profile';
 import { useProfileData } from '../../contexts/ProfileDataContext';
+import styles from '../../styles/PopularProfiles.module.css'
 
 const PopularProfiles = ({ mobile }) => {
   const { popularProfiles } = useProfileData();
@@ -10,10 +11,10 @@ const PopularProfiles = ({ mobile }) => {
   return (
     <Container className={`${
       mobile && "d-lg-none text-center mb-3"
-    }`}>
+    } ${styles.container}`}>
         {popularProfiles.results.length ? (
         <>
-          <p>Most followed profiles.</p>
+          <p className={styles.title}>POPULAR PROFILES</p>
           {mobile ? (
             <div className="d-flex justify-content-around">
               {popularProfiles.results.slice(0, 4).map((profile) => (
