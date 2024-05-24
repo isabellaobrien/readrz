@@ -285,3 +285,4 @@ I’ve created automated tests for all the api models. The tests for each app ar
 * useRedirect.js for user redirection from the code institute moments walkthrough.
 * [Elephantsql](https://www.elephantsql.com/) was my chosen database.
 * [Cloudinary](https://cloudinary.com/) was used for image storage.
+* Articles for the stories were taken from [the electric typewriter](https://tetw.org/Greats)
