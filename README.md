@@ -209,9 +209,11 @@ App.js is the default  main component and is also the parent component of NavBar
 | Click the hide button | the reply form should disappear and if there are any previous replies they should disappear too. | pass |
 
 I created some automated tests for the forms present in the app by using the msw library. The tests are run in the terminal with "npm test".
+
 ![react tests](./src/assets/react-test.png)
 
 I tested my app's performance, accessibility, SEO and best practices on devtool's lighthouse.
+
 ![lighthouse results](./src/assets/lighthouse-test.png)
 
 ## Api testing 
