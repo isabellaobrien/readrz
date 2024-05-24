@@ -1,9 +1,9 @@
 # Reardz
 
-[link to frontend]
-[link to api]
+Take a look at the deployed app: [Readerz](https://readrz-1bd3cc625808.herokuapp.com/)
+Take a look at the deployed api: [api](https://reading-media-api-9661e3dfdf56.herokuapp.com/)
 
-[screenshot AmIResponsive.io]
+![screenshot AmIResponsive.io](./src/assets/responsive.png)
 
 Readrz is a social media app where users can share and read stories and interact with other users. Users can register for an account which gives them access to the full functionality of the app. With a Readrz account a user can:
 
@@ -21,9 +21,11 @@ Readrz is a social media app where users can share and read stories and interact
 * Save / unsave stories 
 * Edit the profile image, name, username, password and about me.
 
-[screenshots of the miro wireframes]
+![miro wireframes](./src/assets/Website%20Wireframing.jpg)
 
 These are images of the initial wireframes for  my project. I created the wireframes using a platform called [Miro](https://miro.com/).
+
+
 
 
 ## Features:
@@ -31,7 +33,7 @@ These are images of the initial wireframes for  my project. I created the wirefr
 
 #### Sign up page
 
-[screenshots of sign up page]
+![sign up page](./src/assets/signup.png)
 
 * It allows the user to sign up for a Readrz account.
 * The user will be asked to provide their username, password and to confirm their password. 
@@ -39,7 +41,7 @@ These are images of the initial wireframes for  my project. I created the wirefr
 
 #### Login page 
 
-[screenshots of sign in page]
+![login page](./src/assets/login.png)
 
 * It allows the user to login to their Readrz account  and  gain access to their profile.
 * Once the user has logged in, the user has access to all the navbar links.
@@ -48,10 +50,10 @@ These are images of the initial wireframes for  my project. I created the wirefr
 * The navigation bar is situated at the top of each page and contains the website logo which links to the home page.
 * If the user is logged in the navigation bar contains links to the create story, home, liked, feed, log out and the logged in user’s username which is a link to their profile.
 
-[screenshots of logged in navbar]
+![logged in navbar](./src/assets/loggedin.png)
 
 * If the user is not logged in the navbar contains links to home, about us, log in and sign up.
-[screenshots of logged out navbar]
+![logged out navbar](./src/assets/loggedout.png)
 
 * The navigation bar gives the user easy access to each part of the website, on all devices.
 
@@ -61,21 +63,19 @@ These are images of the initial wireframes for  my project. I created the wirefr
 * The home page contains a list of all the stories.Each story contains: the story author's profile image and username which links to their profile, the story title, the story description,the time the story was last edited and like, comment and save buttons.
 * The home page also contains a list of the most popular profiles to follow.
 
-[screenshots of homepage ]
+![homepage](./src/assets/story-list.png)
 
 
 #### Feed page
 * The feed page can be accessed via the feed link in the navbar.
 * The feed page contains a list of stories created by users that the logged in user follows.
 * The feed page also contains a list of the most popular profiles to follow.
-[screenshots of feed ]
 
 
 #### Liked page
 * The liked page can be accessed via the liked link in the navbar.
 * The liked page contains a list of stories liked by the logged in user.
 * The liked page also contains a list of the most popular profiles to follow.
-[screenshots of feed ]
 
 
 #### About Us page
@@ -83,7 +83,7 @@ These are images of the initial wireframes for  my project. I created the wirefr
 * The about us page is accessible to users that are not signed up to the app or that are logged out.
 
 
-[screenshots of the about us page]
+![about us page](./src/assets/aboutus.png)
 
 
 #### Story page
@@ -91,8 +91,8 @@ These are images of the initial wireframes for  my project. I created the wirefr
 * If the user is also the author of the story there will be an icon next to the username that opens a dropdown menu which allows the user to edit or delete the story.
 * The story author can edit or delete their story via a dropdown menu that can be accessed via an icon next to the author’s username on the post.
 * The edit form fields are  pre populated  with the previous content and there are buttons to  cancel  or save changes.
-[screenshots of edit / delete button]
 
+![edit and delete buttons](./src/assets/edit-delete.png)
 
 * Via the like button the user can like and unlike a story, consequently the like count will increase or decrease by one.
 * Via the save button the user can save stories.
@@ -105,48 +105,73 @@ In the story page the user will have access to the comment section.
 * Each comment is composed of: comment author’s profile picture and username, the comment, the time the comment was last updated, the like and reply buttons. 
 * The comment author can edit or delete their comment via a dropdown menu that can accessed via an icon next to the author’s username on the comment.
 
-[screenshots of comment section]
-
+![comment section](./src/assets/comment.png)
 
 * The edit form fields are  pre populated with the previous content  and there are buttons to  cancel  or save changes. 
 * Via the like button the user can like and unlike comments consequently the like count will increase or decrease by one.
 * Once the reply button is clicked the comment reply form appears and all the previous replies to the comment appear if there are any. Via the reply form the user can create a reply. 
 [screenshots of a reply  ]
 * The reply author can edit or delete their reply via a dropdown menu that can accessed via an icon next to the author’s username on the reply
-* The edit form fields are  pre populated with the previous content and there are buttons to  cancel  or save changes . 
-
-
-
+* The edit form fields are  pre populated with the previous content and there are buttons to  cancel  or save changes. 
 
 #### Popular profiles section 
 * The popular profiles section appears on the home, feed and liked pages.
 * The section contains a list of popular profiles that can be followed and unfollowed via the  buttons.
 * On desktop the popular profiles section appears to the right of the stories
-[screenshots of popular profiles section on desktop]
-
+![popular profiles section on desktop](./src/assets/popular-profiles.png)
 
 * On mobile the popular profiles section appears at the top of the page. 
-[screenshots of popular profiles section on mobile]
+![popular profiles section on mobile](./src/assets/popular-profiles-mobile.png)
 
 
 #### Profile page
-[screenshots of the profile page]
+![profile page](./src/assets/profile-page.png)
 
 * The user’s profile page is reached via the link in the navbar. 
 * All profiles can be reached by clicking any of the profile pictures and usernames around the app (popular profiles, stories, comments, replies).  
 * The profile page contains: an enlarged profile picture, the number of stories a user has created, the number of followers the user has and the number of profiles the user follows, the user’s name and an about me section. There’s also a follow/unfollow button.On the same page there’s a list of stories created by the user.
 * The profile page contains a list of stories saved by the user.
 
+![edit profile options](./src/assets/profile-edit-delete.png)
+
 * The profile owner can edit their profile picture, name, about me, username and password via a drop down menu. 
 * The edit form fields are  pre populated with the previous content and there are buttons to  cancel  or save changes. 
 
 
 #### Create story page 
-[screenshots of the create story page]
-
+![create story page](./src/assets/create-story.png)
 
 * It allows the user to create a story. Each story can contain a title description and content. 
 
+## React components 
+![react component structure](./src/assets/Mind%20map.jpeg)
+
+This is the component structure that was used to create the frontend. 
+App.js is the default  main component and is also the parent component of NavBar which contains Routes to various other components such as:
+* StoryList (allows the user see stories listed in the home, liked and feed pages)
+* LoginForm (allows the user to log in to the app)
+* SignUpForm (allows the user to sign up to the app)
+* CreateStory(allows the user to create stories)
+* StoryPage (allows the user to see a story in more detail including the comment section)
+* StoryEditForm (allows the user to edit one of their stories)
+* ProfilePage (allows the user to view their own profile and other’s profiles)
+* ProfileImageEditForm (allows the user to edit their profile image)
+* ProfileNameEditForm (allows the user to edit their profile name)
+* ProfileAboutUsEditForm (allows the user to edit their profile iabout me)
+* UsernameForm (allows the user to change their username)
+* PasswordForm (allows the user to change their password)
+* SavedStories(shows the stories a user has saved)
+* PopularProfiles(allows the user to view profiles and follow them)
+* Story(creates the structure of the post)
+* StoryDetail(contains the story content)
+* Asset(is used as a loading spinner and can output a message)
+* Profile(creates the structure of the profile)
+* Comment(creates the structure of the comment)
+* Reply(creates the structure of the reply)
+* CreateComment(allows the user to create a comment)
+* CommentEditForm(allows the user to edit their comments)
+* CreateReply(allows the user to create a reply)
+* ReplyEditForm(allows the user to edit their replies)
 
 ## Frontend testing
 
@@ -183,9 +208,11 @@ In the story page the user will have access to the comment section.
 | Click the reply icon underneath a comment | the reply form should appear and if there are any previous replies they’ll appear too. | pass |
 | Click the hide button | the reply form should disappear and if there are any previous replies they should disappear too. | pass |
 
-I created some automated tests for the forms present in the app by using the msw library.
+I created some automated tests for the forms present in the app by using the msw library. The tests are run in the terminal with "npm test".
+![react tests](./src/assets/react-test.png)
 
-[devtools results]
+I tested my app's performance, accessibility, SEO and best practices on devtool's lighthouse.
+![lighthouse results](./src/assets/lighthouse-test.png)
 
 ## Api testing 
 
@@ -227,7 +254,7 @@ I created some automated tests for the forms present in the app by using the msw
 
 I’ve created automated tests for all the api models. The tests for each app are stored in the test.py file. The tests  are run by entering “python manage.py test” in the terminal.
 
-[screenshot of test results]
+![api tests](./src/assets/api%20tests.png)
 
 ## Frontend libraries
 * React bootstrap 4: React Bootstrap is a library of reusable components that are already styled.
@@ -249,10 +276,10 @@ I’ve created automated tests for all the api models. The tests for each app ar
 * I then manually deploy my project.
 
 ## Credits:
-* Colours: coolers, the main colours used where white and black with pops of bright colours like blue, yellow, red 
-* Fonts: google fonts
+* Colours: [coolers](https://coolors.co/), the main colours used where white and black with pops of bright colours like blue, yellow, red 
+* Fonts: [google fonts](https://fonts.google.com/)
 * Asset.js for the loading spinner from the code institute moments walkthrough.
 * Utils.js for infinite scroll from the code institute moments walkthrough.
 * useRedirect.js for user redirection from the code institute moments walkthrough.
-* Elephantsql was my chosen database.
-* Cloudinary was used for image storage.
+* [Elephantsql](https://www.elephantsql.com/) was my chosen database.
+* [Cloudinary](https://cloudinary.com/) was used for image storage.

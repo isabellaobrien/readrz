@@ -95,28 +95,12 @@ const ProfileImageEditForm = () => {
                       }}
                 />
             </Form.Group>
-            
-            {/* <Form.Group controlId="about_me" className={styles.input}>
-                <Form.Label className="d-none">about_me</Form.Label>
-                <Form.Control 
-                    type="text" 
-                    placeholder="about me" 
-                    name="about_me"
-                    value={about_me}
-                    onChange={handleChange}
-                />
-            </Form.Group>
-            {errors.about_me?.map((message, idx) => (
-                <Alert key={idx} variant="warning">
-                    {message}
-                </Alert>
-            ))} */}
 
             <button className={styles.btn} onClick={() => history.goBack()}>
                 cancel
             </button>
             <button type="submit" className={styles.btn}>
-                edit profile
+                edit 
             </button>
             {errors.non_field_errors?.map((message, idx) => (
                 <Alert key={idx} variant="warning">
