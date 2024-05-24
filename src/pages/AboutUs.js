@@ -19,7 +19,7 @@ const AboutUs = () => {
               <Card.Title className={styles.title}>Community</Card.Title>
               <Card.Text>
                 you can comment, like comments, reply to comments an even like replies, this 
-                functionality allowbs you to interact with other users creating a sense of community
+                functionality allows you to interact with other users creating a sense of community
               </Card.Text>
             </Card.Body>
           </Card>

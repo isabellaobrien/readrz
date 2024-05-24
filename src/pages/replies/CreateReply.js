@@ -42,7 +42,7 @@ const CreateReply = (props) => {
         <Row>
             <Col xs={12} md={{ span: 8, offset: 2 }}>
                 <div className={styles.container} title="createreply">
-                    <h4>replies</h4>
+                    <p className={styles.replies}>REPLIES</p>
                     <Form onSubmit={handleSubmit}>
                         <Form.Group controlId="CreateReplyForm">
                             <Form.Control 

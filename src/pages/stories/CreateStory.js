@@ -84,6 +84,7 @@ const CreateStory = () => {
             <Form.Group controlId="content" className={styles.input}>
                 <Form.Label className="d-none">content</Form.Label>
                 <Form.Control 
+                    as='textarea'
                     type="text" 
                     placeholder="content" 
                     name="content"

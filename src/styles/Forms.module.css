@@ -10,6 +10,7 @@
 .title{
     font-size: 1.5rem;
     padding-bottom: 1rem;
+    font-family: 'Varela Round', sans-serif;
 }
 
 .input{
@@ -20,11 +21,28 @@
     color: black;
     background-color: white;
     padding: 0.5rem;
+    margin: 1rem;
     border-radius: 0.25rem;
     border: black solid 1px;
+}
+
+.btn:hover{
+    color: white;
+    background-color: black;
 }
 
 .img{
     border-radius: 50%;
     width: 15rem;
+}
+
+.click_container{
+    padding-top: 1rem;
+}
+.click{
+    color: black;
+}
+
+.click:hover{
+    color: black;
 }

@@ -84,7 +84,7 @@ const ProfilePage = () => {
                 </Row>
                 
                 <p className={styles.about_me}>" {profile?.about_me} "</p>
-                <p>{profile?.name}</p>
+                <p> - {profile?.name}</p>
             </Col>
             <Col md={5} className={styles.col}>
                 <hr />

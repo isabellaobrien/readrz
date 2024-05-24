@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { useSetCurrentUser } from '../../contexts/CurrentUserContext';
 import { useRedirect } from '../../hooks/useRedirect';
-
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 
 
 
@@ -88,6 +88,12 @@ const LoginForm = () => {
                     {message}
                 </Alert>
             ))}
+
+            <div className={styles.click_container}>
+                <Link to="/signup" className={styles.click}>
+                Don't have an account? Sign up now!
+                </Link>
+            </div>
         </Form>
     </div>
   )

@@ -4,6 +4,7 @@ import { axiosReq } from '../../api/axiosDefaults';
 import styles from '../../styles/Forms.module.css'
 import {Form, Alert,} from 'react-bootstrap'
 
+
 const StoryEditForm = () => {
     const [StoryData, setStoryData] = useState({
         title: "",
@@ -98,6 +99,7 @@ const StoryEditForm = () => {
             <Form.Group controlId="content" className={styles.input}>
                 <Form.Label className="d-none">content</Form.Label>
                 <Form.Control 
+                    as='textarea'
                     type="text" 
                     placeholder="content" 
                     name="content"

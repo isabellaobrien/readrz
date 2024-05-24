@@ -33,14 +33,6 @@
     display: inline-block;
 }
 
-.dropdown{
-    background-color: #FFBF00;
-    border-color: transparent;
-}
-
-.dropdown:hover{
-    background-color: black;
-}
 
 
 .time{

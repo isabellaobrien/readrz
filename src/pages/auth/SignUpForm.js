@@ -4,6 +4,7 @@ import styles from "../../styles/Forms.module.css"
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { useRedirect } from '../../hooks/useRedirect';
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 
 const SignUpForm = () => {
     useRedirect('loggedIn')
@@ -96,6 +97,11 @@ const SignUpForm = () => {
                     {message}
                 </Alert>
             ))}
+            <div className={styles.click_container}>
+                <Link to="/login" className={styles.click}>
+                Already have an account? Login!
+                </Link>
+            </div>
         </Form>
     </div>
   )

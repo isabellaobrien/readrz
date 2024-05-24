@@ -26,6 +26,7 @@
 /* story detail card  */
 .card{
     margin: auto;
+    border: #FF0090 solid 3px;
 }
 
 /* like and comment icons */
@@ -38,3 +39,4 @@
 .more{
     display: inline-block;
 }
+

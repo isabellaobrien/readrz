@@ -2,6 +2,7 @@ import React, {useState, useRef, useEffect} from 'react'
 import {Navbar, Nav} from 'react-bootstrap'
 import styles from "../styles/NavBar.module.css";
 import { useCurrentUser, useSetCurrentUser } from '../contexts/CurrentUserContext';
+import { NavLink } from "react-router-dom";
 import axios from 'axios'
 
 
@@ -40,7 +41,7 @@ function NavBar() {
       <Nav.Link href="/feed" className={styles.link}>feed</Nav.Link>
       <Nav.Link href="/liked" className={styles.link}>liked</Nav.Link>
       <Nav.Link href="/create-story" className={styles.link}>create story</Nav.Link>
-      <Nav.Link to='/' onClick={handleSignOut} className={styles.link}>log out</Nav.Link>
+      <NavLink to='/' onClick={handleSignOut} className={styles.logout}>log out</NavLink>
       <Nav.Link href={`/profiles/${currentUser?.profile_id}`} className={styles.link}>
         <div>
           <i class="fa-solid fa-user"></i>
