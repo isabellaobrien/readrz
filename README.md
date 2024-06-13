@@ -1,6 +1,7 @@
 # Reardz
 
 Take a look at the deployed app: [Readrz](https://readrz-1bd3cc625808.herokuapp.com/)
+
 Take a look at the deployed api: [api](https://reading-media-api-9661e3dfdf56.herokuapp.com/)
 
 ![screenshot AmIResponsive.io](./src/assets/responsive.png)
